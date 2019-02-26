@@ -71,7 +71,7 @@ int8 trisb;
 int8 portb;
 #locate portb = 0xF81
 
-#bit light = portb.0
+#bit light  = portb.0
 #bit value1 = portb.1
 #bit value2 = portb.2
 #bit value3 = portb.3
@@ -100,6 +100,7 @@ int8 trise;
 
 #define write_cntrl 0xd0
 #define read_cntrl  0xd1
+void read_settime(void);
 void selectmode(void);
 char tobcd(char bin_val);
 void set_time(char sec,char min,char hour,char dat1,char month1,char year1);
@@ -122,20 +123,20 @@ void set_program(void);
 VOID SAVE_PRG(VOID);
 void delay_min(int8 d_min);
 
-int8 sec00;
-int8 sec10;
-int8 min00;
-int8 min10;
+signed int8 sec00;
+signed int8 sec10;
+signed int8 min00;
+signed int8 min10;
 //=========min on_off ==
-int8 min;
+signed int8 min=30;
 
 
 int8 cmd;
 
-int8 hr00;
-int8 hr10;
+signed int8 hr00;
+signed int8 hr10;
 //=========hr_on_off
-int8 hr;
+signed int8 hr=12;
 
 
 
@@ -203,7 +204,7 @@ trisa5=1;
 trise1=1;
 trise2=1;
 
-             light =0;
+            // light =0;
              //pump  =0;
              value1=0;
              value2=0;
@@ -227,41 +228,7 @@ trise2=1;
    }
    ELSE
    {
-   H1=READ_EEPROM(2);
-   M1=READ_EEPROM(3);
-   
-   H2=READ_EEPROM(4);
-   M2=READ_EEPROM(5);
-   
-   H3=READ_EEPROM(6);
-   M3=READ_EEPROM(7);
-   
-   H4=READ_EEPROM(8);
-   M4=READ_EEPROM(9);
-   
-   H5=READ_EEPROM(10);
-   M5=READ_EEPROM(11);
-   
-   H6=READ_EEPROM(12);
-   M6=READ_EEPROM(13);
-   
-   H7=READ_EEPROM(14);
-   M7=READ_EEPROM(15);   
-   
-   H8=READ_EEPROM(16);
-   M8=READ_EEPROM(17);
-   
-   H9=READ_EEPROM(18);
-   M9=READ_EEPROM(19);
-   
-   H10=READ_EEPROM(20);
-   M10=READ_EEPROM(21);   
-   
-   H11=READ_EEPROM(22);
-   M11=READ_EEPROM(23);
-   
-   H12=READ_EEPROM(24);
-   M12=READ_EEPROM(25);   
+     read_settime();   
    }
    
    
@@ -269,9 +236,9 @@ trise2=1;
   // lcd_gotoxy(1,1);
   // lcd_putc("TIME V1");
    
-    if(read_eeprom(26)==1) light=1;
+  //  if(read_eeprom(26)==1) light=1;
 
-    if(read_eeprom(26)==0) light=0;   
+  //  if(read_eeprom(26)==0) light=0;   
    
    while(true)
    {
@@ -482,9 +449,8 @@ void active_cmd(void)
 switch (cmd) {
 
       case 1:
-             light =0;
-             //pump  =0;
-             value1=0;
+
+             value1=1;
              value2=0;
              value3=0;
              value4=0;
@@ -493,14 +459,14 @@ switch (cmd) {
            break;
 
       case 2:
-             //pump  =1;
-             value1=1;
+       
+             value1=0;
              value2=0;
              value3=0;
              value4=0;
            break;  
       case 3:
-             //pump  =1;
+         
              value1=0;
              value2=1;
              value3=0;
@@ -508,14 +474,14 @@ switch (cmd) {
            break;            
            
       case 4:
-             //pump  =1;
+       
              value1=0;
              value2=0;
-             value3=1;
+             value3=0;
              value4=0;
            break;           
       case 5:
-             //pump  =1;
+       
              value1=0;
              value2=0;
              value3=0;
@@ -523,28 +489,28 @@ switch (cmd) {
 
            break;          
       case 6:
-             //pump  =0;
+        
              value1=0;
              value2=0;
              value3=0;
              value4=0;
            break;          
       case 7:
-             //pump  =1;
+           
              value1=1;
              value2=0;
              value3=0;
              value4=0;
            break;          
       case 8:
-             //pump  =1;
+         
              value1=0;
              value2=1;
              value3=0;
              value4=0;
            break;       
       case 9:
-             //pump  =1;
+           
              value1=0;
              value2=0;
              value3=1;
@@ -552,22 +518,21 @@ switch (cmd) {
            break;            
           
       case 10:
-             //pump  =1;
+         
              value1=0;
              value2=0;
              value3=0;
              value4=1;
            break;
       case 11:
-             //pump  =0;
+      
              value1=0;
              value2=0;
              value3=0;
              value4=0; 
            break;
       case 12:
-             light =1;
-             //pump  =0;
+       
              value1=0;
              value2=0;
              value3=0;
@@ -576,7 +541,7 @@ switch (cmd) {
          
       default:
 
-             //pump  =0;
+            
              value1=0;
              value2=0;
              value3=0;

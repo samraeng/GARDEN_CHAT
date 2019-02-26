@@ -1,5 +1,8 @@
+
+
 void set_program(void)
-{        set_count=0;  
+{        read_settime();
+         set_count=0;
          lcd_gotoxy(1,1);
          lcd_putc("PRG     ");
           lcd_gotoxy(1,0);lcd_putc("        ");
@@ -766,4 +769,42 @@ write_eeprom (23,M11);
 write_eeprom (24,H12);
 write_eeprom (25,M12);
 //----------------------
+}
+void read_settime(void)
+{
+   H1=READ_EEPROM(2);
+   M1=READ_EEPROM(3);
+   
+   H2=READ_EEPROM(4);
+   M2=READ_EEPROM(5);
+   
+   H3=READ_EEPROM(6);
+   M3=READ_EEPROM(7);
+   
+   H4=READ_EEPROM(8);
+   M4=READ_EEPROM(9);
+   
+   H5=READ_EEPROM(10);
+   M5=READ_EEPROM(11);
+   
+   H6=READ_EEPROM(12);
+   M6=READ_EEPROM(13);
+   
+   H7=READ_EEPROM(14);
+   M7=READ_EEPROM(15);   
+   
+   H8=READ_EEPROM(16);
+   M8=READ_EEPROM(17);
+   
+   H9=READ_EEPROM(18);
+   M9=READ_EEPROM(19);
+   
+   H10=READ_EEPROM(20);
+   M10=READ_EEPROM(21);   
+   
+   H11=READ_EEPROM(22);
+   M11=READ_EEPROM(23);
+   
+   H12=READ_EEPROM(24);
+   M12=READ_EEPROM(25);
 }
