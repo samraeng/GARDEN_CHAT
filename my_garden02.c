@@ -194,9 +194,17 @@ int8 year10;
 
 int8 cmd_min,cmd_hr;
 
+int8 setvale=0;
+int8 prg_vale=1;
 
+
+int1 prg_v[13][5];
 int1 flg_set_time,flg_set_prg;
-//int1 flg_set_oFF;
+int1 flg_set_vale=0;
+int1 flg_v1=0;
+int1 flg_v2=0;
+int1 flg_v3=0;
+int1 flg_v4=0;
 
 int8 set_count;
 int8 a,b;
@@ -213,7 +221,9 @@ byte const num[12] = {'0','1','2','3','4','5','6','7','8','9'};
 void hex_bcd(int8 k);
 void chk_lcd(void);
 void active_cmd(void);
-
+void f_set_active_value(void);
+void lcd_clr(void);
+#include "setvale.c"
 #include "func_settime.c"
 
 
@@ -266,8 +276,10 @@ trise2=1;
    IF(read_eeprom(0)==255 || read_eeprom(1)==255 )
    {
    set_time(15,58,23,28,12,04);   //SEC/MIN/HOURS/DATE/MONT/YEAR
-   H1=6;H2=9;H3=11;H4=13;H5=15;H6=17;H7=18;H8=19;H10=20;H11=22;H12=0;
-   M1=M2=M3=M4=M5=M6=M7=M8=M9=M10=M11=M12=0;
+   H1=6;H2=9;H3=11;H4=13;
+   //H5=15;H6=17;H7=18;H8=19;H10=20;H11=22;H12=0;
+   M1=M2=M3=M4=0;
+   //M5=M6=M7=M8=M9=M10=M11=M12=0;
    }
    ELSE
    {
@@ -342,15 +354,19 @@ trise2=1;
             set_program();
           
           } 
-     
-           //   lcd_gotoxy(1,1);
-           // lcd_putc("TIME V1");   
+ //==================function set active vale ====================      
+        if(!input(sw_up))
+        {
+            while(!input(sw_up)){restart_wdt();}
+            flg_set_vale=1;
+            f_set_active_vale(); 
+        }
             
  //========================= GET TABLE ===================            
      
      IF(cmd_HR == H1 && cmd_MIN == M1)//------ A
      {
-     cmd= 1;write_eeprom(26,0);
+     cmd= 1;
      }
      ELSE IF(cmd_HR == H2 && cmd_MIN == M2)//----B
      {
@@ -363,7 +379,7 @@ trise2=1;
      ELSE IF(cmd_HR == H4 && cmd_MIN == M4)//------D
      {
       cmd= 4;
-     }     
+     }/*     
      ELSE IF(cmd_HR == H5 && cmd_MIN == M5)//------E
      {
       cmd= 5;
@@ -391,12 +407,12 @@ trise2=1;
      }
      ELSE IF(cmd_HR == H11 && cmd_MIN == M11)//------H
      {
-      cmd= 11;
+      cmd= 11;write_eeprom(26,0);
      }
      ELSE IF(cmd_HR == H12 && cmd_MIN == M12)//------H
      {
       cmd= 12;write_eeprom(26,1);
-     }     
+     }*/     
      ELSE
      {
       
@@ -412,11 +428,11 @@ trise2=1;
       Checksum = Read_Data();                 // read checksum
       if(Time_out){                           // If reading takes long time
       
-        lcd_gotoxy(1,1); 
-        lcd_putc("        ");                       // LCD clear
-        lcd_gotoxy(1,0); 
-        lcd_putc("        ");                       // LCD clear  
-                
+       // lcd_gotoxy(1,1); 
+       // lcd_putc("        ");                       // LCD clear
+       // lcd_gotoxy(1,0); 
+       // lcd_putc("        ");                       // LCD clear  
+        lcd_clr();        
         lcd_gotoxy(1,1);                     // Go to column 5 row 1
         lcd_putc("Time out!");
       }
@@ -603,7 +619,7 @@ switch (cmd) {
              value3=1;
              value4=1;
            break;           
-      case 5:
+      /*case 5:
        
              value1=0;
              value2=1;
@@ -661,7 +677,7 @@ switch (cmd) {
              value3=1;
              value4=1;
            break;            
-         
+         */
       default:
 
             
@@ -817,3 +833,11 @@ void set_time(void)
 set_time(00,min,hr,28,12,04);
 }
 
+void lcd_clr(void)
+{
+        lcd_gotoxy(1,1); 
+        lcd_putc("        ");                       // LCD clear
+        lcd_gotoxy(1,0); 
+        lcd_putc("        ");                       // LCD clear  
+                
+}
