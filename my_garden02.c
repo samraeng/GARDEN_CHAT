@@ -273,17 +273,42 @@ trise2=1;
    
   // ds1307_init();
 
-   IF(read_eeprom(0)==255 || read_eeprom(1)==255 )
+   IF(read_eeprom(2)==255 || read_eeprom(3)==255 )
    {
    set_time(15,58,23,28,12,04);   //SEC/MIN/HOURS/DATE/MONT/YEAR
    H1=6;H2=9;H3=11;H4=13;
    //H5=15;H6=17;H7=18;H8=19;H10=20;H11=22;H12=0;
    M1=M2=M3=M4=0;
    //M5=M6=M7=M8=M9=M10=M11=M12=0;
+   prg_v[1][1]=prg_v[1][2]=prg_v[1][3]=prg_v[1][4]=1;
+   prg_v[2][1]=prg_v[2][2]=prg_v[2][3]=prg_v[2][4]=1;
+   prg_v[3][1]=prg_v[3][2]=prg_v[3][3]=prg_v[3][4]=1;
+   prg_v[4][1]=prg_v[4][2]=prg_v[4][3]=prg_v[4][4]=1;
    }
    ELSE
    {
      read_settime();   
+     prg_v[1][1]=READ_EEPROM(27);
+     prg_v[1][2]=READ_EEPROM(28);
+     prg_v[1][3]=READ_EEPROM(29);
+     prg_v[1][4]=READ_EEPROM(30);
+     
+     
+     prg_v[2][1]=READ_EEPROM(31);
+     prg_v[2][2]=READ_EEPROM(32);
+     prg_v[2][3]=READ_EEPROM(33);
+     prg_v[2][4]=READ_EEPROM(34);
+     
+      prg_v[3][1]=READ_EEPROM(35);
+      prg_v[3][2]=READ_EEPROM(36);
+      prg_v[3][3]=READ_EEPROM(37);
+      prg_v[3][4]=READ_EEPROM(38);
+     
+        prg_v[4][1]=READ_EEPROM(39);
+        prg_v[4][2]=READ_EEPROM(40);
+        prg_v[4][3]=READ_EEPROM(41);
+        prg_v[4][4]=READ_EEPROM(42);
+   //restart_wdt();
    }
    
    
@@ -417,6 +442,9 @@ trise2=1;
      {
       
      }
+     
+   active_cmd();  
+     
 //--------------------------------------     
     Time_out = 0;
     Start_signal();
@@ -589,35 +617,35 @@ switch (cmd) {
 
       case 1:
 
-             value1=0;
-             value2=1;
-             value3=1;
-             value4=1;
+             value1=prg_v[1][1];
+             value2=prg_v[1][2];//////1;
+             value3=prg_v[1][3];
+             value4=prg_v[1][4];
                   
 
            break;
 
       case 2:
        
-             value1=1;
-             value2=1;
-             value3=1;
-             value4=1;
+             value1=prg_v[2][1];
+             value2=prg_v[2][2];/////1;
+             value3=prg_v[2][3];
+             value4=prg_v[2][4];
            break;  
       case 3:
          
-             value1=0;
-             value2=1;
-             value3=1;
-             value4=1;
+             value1=prg_v[3][1];
+             value2=prg_v[3][2];
+             value3=prg_v[3][3];
+             value4=prg_v[3][4];
            break;            
            
       case 4:
        
-             value1=1;
-             value2=1;
-             value3=1;
-             value4=1;
+             value1=prg_v[4][1];
+             value2=prg_v[4][2];
+             value3=prg_v[4][3];
+             value4=prg_v[4][4];
            break;           
       /*case 5:
        
@@ -819,6 +847,7 @@ void set_time(void)
                     if(!input(sw_up) && !input(sw_down))
                     {
                      while(!input(sw_up) && !input(sw_down)){restart_wdt();}
+                     delay_ms(500);
                      flg_set_time=0;
                     } 
 

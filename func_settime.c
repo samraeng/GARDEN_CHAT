@@ -6,7 +6,7 @@ void set_program(void)
          lcd_gotoxy(1,1);
          lcd_putc("PRG     ");
           lcd_gotoxy(1,0);lcd_putc("        ");
-          
+        lcd_cursor_on(0);  
         hex_bcd(prg_num);
                          lcd_gotoxy(5,1);
                          lcd_putc(num[a]); 
@@ -123,7 +123,7 @@ void set_program(void)
                        lcd_gotoxy(4,0);
                       lcd_putc(":");               
               }
-             /* else if(prg_num==5)
+              else if(prg_num==5)
               {
                       hex_bcd(m5);
                       lcd_gotoxy(5,0);
@@ -242,7 +242,7 @@ void set_program(void)
                       
                        lcd_gotoxy(4,0);
                       lcd_putc(":");               
-              }*/
+              }
               else
               {}
               //-----------------------------
@@ -745,6 +745,7 @@ write_eeprom (7,M3);
 write_eeprom (8,H4);
 write_eeprom (9,M4);
 //----------------------
+
 /*
 write_eeprom (10,H5);
 write_eeprom (11,M5);
@@ -768,8 +769,9 @@ write_eeprom (22,H11);
 write_eeprom (23,M11);
 //----------------------
 write_eeprom (24,H12);
-write_eeprom (25,M12);*/
+write_eeprom (25,M12);
 //----------------------
+*/
 }
 void read_settime(void)
 {
@@ -809,27 +811,28 @@ void read_settime(void)
    
    H12=READ_EEPROM(24);
    M12=READ_EEPROM(25);
-*/
-   prg_v[1][1]=READ_EEPROM(10);
-   prg_v[1][2]=READ_EEPROM(11);
-   prg_v[1][3]=READ_EEPROM(12);
-   prg_v[1][4]=READ_EEPROM(13);
-//-----------------------   
-   prg_v[2][1]=READ_EEPROM(14);
-   prg_v[2][2]=READ_EEPROM(15);
-   prg_v[2][3]=READ_EEPROM(16);
-   prg_v[2][4]=READ_EEPROM(17);
-//-----------------------
-   prg_v[3][1]=READ_EEPROM(18);
-   prg_v[3][2]=READ_EEPROM(19);
-   prg_v[3][3]=READ_EEPROM(20);
-   prg_v[3][4]=READ_EEPROM(21);
-//--------------------------
-   prg_v[4][1]=READ_EEPROM(22);
-   prg_v[4][2]=READ_EEPROM(23);
-   prg_v[4][3]=READ_EEPROM(24);
-   prg_v[4][4]=READ_EEPROM(25);
-   
-   
-
+   */
+  /*restart_wdt(); 
+   prg_v[1][1]=READ_EEPROM(27);
+   prg_v[1][2]=READ_EEPROM(28);
+    prg_v[1][3]=READ_EEPROM(29);
+     prg_v[1][4]=READ_EEPROM(30);
+     
+     
+    prg_v[2][1]=READ_EEPROM(31);
+   prg_v[2][2]=READ_EEPROM(32);
+    prg_v[2][3]=READ_EEPROM(33);
+     prg_v[2][4]=READ_EEPROM(34);
+     
+      prg_v[3][1]=READ_EEPROM(35);
+      prg_v[3][2]=READ_EEPROM(36);
+      prg_v[3][3]=READ_EEPROM(37);
+      prg_v[3][4]=READ_EEPROM(38);
+     
+        prg_v[4][1]=READ_EEPROM(39);
+        prg_v[4][2]=READ_EEPROM(40);
+        prg_v[4][3]=READ_EEPROM(41);
+        prg_v[4][4]=READ_EEPROM(42);
+   restart_wdt();
+   */
 }
