@@ -715,11 +715,13 @@ void set_program(void)
           //===================exit set time on=====================
                  if(!input(sw_up) && !input(sw_down))
                  {
-  
+                    delay_ms(100);
+                    if(!input(sw_up) && !input(sw_down))
+                    {
                      while(!input(sw_up) && !input(sw_down)){restart_wdt();}
                      flg_set_PRG=0;
-                     
-
+                     delay_ms(200);
+                    }
                   
                  }
 

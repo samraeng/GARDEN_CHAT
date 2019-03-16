@@ -196,7 +196,9 @@ int8 cmd_min,cmd_hr;
 
 int8 setvale=0;
 int8 prg_vale=1;
-
+int8 select_temp=0;
+int8 hi_temp=0;
+int8 lo_temp=0;
 
 int1 prg_v[13][5];
 int1 flg_set_time,flg_set_prg;
@@ -205,6 +207,9 @@ int1 flg_v1=0;
 int1 flg_v2=0;
 int1 flg_v3=0;
 int1 flg_v4=0;
+
+int1 flg_set_temp=0;
+
 
 int8 set_count;
 int8 a,b;
@@ -222,10 +227,12 @@ void hex_bcd(int8 k);
 void chk_lcd(void);
 void active_cmd(void);
 void f_set_active_value(void);
+void settemp(void);
+
 void lcd_clr(void);
 #include "setvale.c"
 #include "func_settime.c"
-
+#include "settemp.c"
 
 void main()
 {
@@ -308,6 +315,10 @@ trise2=1;
         prg_v[4][2]=READ_EEPROM(40);
         prg_v[4][3]=READ_EEPROM(41);
         prg_v[4][4]=READ_EEPROM(42);
+  
+           
+      hi_temp=READ_EEPROM(44);  
+      lo_temp=READ_EEPROM(45);
    //restart_wdt();
    }
    
@@ -386,7 +397,25 @@ trise2=1;
             flg_set_vale=1;
             f_set_active_vale(); 
         }
-            
+//======================function set temp===========================
+        if(!input(sw_down))
+        {
+           delay_ms(100);
+           if(!input(sw_down))
+           {while(!input(sw_down)){restart_wdt();}
+             flg_set_temp=1;
+             settemp();
+           }
+        } 
+//=========================on_off_vale4 by temp=====================
+if( ((temp10*10)+temp10)>hi_temp)
+{
+value4=0;
+}
+if( ((temp10*10)+temp10)<lo_temp)
+{
+value4=1;
+}
  //========================= GET TABLE ===================            
      
      IF(cmd_HR == H1 && cmd_MIN == M1)//------ A
@@ -620,7 +649,7 @@ switch (cmd) {
              value1=prg_v[1][1];
              value2=prg_v[1][2];//////1;
              value3=prg_v[1][3];
-             value4=prg_v[1][4];
+             //value4=prg_v[1][4];
                   
 
            break;
@@ -630,14 +659,14 @@ switch (cmd) {
              value1=prg_v[2][1];
              value2=prg_v[2][2];/////1;
              value3=prg_v[2][3];
-             value4=prg_v[2][4];
+             //value4=prg_v[2][4];
            break;  
       case 3:
          
              value1=prg_v[3][1];
              value2=prg_v[3][2];
              value3=prg_v[3][3];
-             value4=prg_v[3][4];
+             //value4=prg_v[3][4];
            break;            
            
       case 4:
@@ -645,7 +674,7 @@ switch (cmd) {
              value1=prg_v[4][1];
              value2=prg_v[4][2];
              value3=prg_v[4][3];
-             value4=prg_v[4][4];
+            // value4=prg_v[4][4];
            break;           
       /*case 5:
        
