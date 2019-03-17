@@ -408,11 +408,11 @@ trise2=1;
            }
         } 
 //=========================on_off_vale4 by temp=====================
-if( ((temp10*10)+temp10)>hi_temp)
+if( ((temp100*10)+temp10)>hi_temp)
 {
 value4=0;
 }
-if( ((temp10*10)+temp10)<lo_temp)
+if( ((temp100*10)+temp10)<lo_temp)
 {
 value4=1;
 }

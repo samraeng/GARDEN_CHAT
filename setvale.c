@@ -218,7 +218,7 @@ void f_set_active_vale(void)
  ////////////////////setvale active/////////////////////
  if(!input(sw_up)&&input(sw_down)&&(setvale==0))//////////////vale1 on
  {
-   delay_ms(100);
+   delay_ms(200);
    if(!input(sw_up)&&input(sw_down)&&(setvale==0))
    {
     lcd_gotoxy(1,0);lcd_putc("1");
@@ -227,7 +227,7 @@ void f_set_active_vale(void)
  }
  if(!input(sw_down)&&input(sw_up)&&(setvale==0))//////////////vale1 off
  {
-   delay_ms(100);
+   delay_ms(200);
    if(!input(sw_down)&&input(sw_up)&&(setvale==0))
    {
     lcd_gotoxy(1,0);lcd_putc("0");   
@@ -237,7 +237,7 @@ void f_set_active_vale(void)
 //---------------------------------------------------------------
  if(!input(sw_up)&&input(sw_down)&&(setvale==1))//////////////vale2 on
  {
-    delay_ms(100);
+    delay_ms(200);
    if(!input(sw_up)&&input(sw_down)&&(setvale==1))
    {
     lcd_gotoxy(3,0);lcd_putc("1");
@@ -246,7 +246,7 @@ void f_set_active_vale(void)
  }
  if(input(sw_up)&&!input(sw_down)&&(setvale==1))//////////////vale2 off
  {
-   delay_ms(100);
+   delay_ms(200);
    if(input(sw_up)&&!input(sw_down)&&(setvale==1))
    {
     lcd_gotoxy(3,0);lcd_putc("0");
@@ -256,7 +256,7 @@ void f_set_active_vale(void)
 //--------------------------------------------------------------- 
  if(!input(sw_up)&&input(sw_down)&&(setvale==2))//////////////vale3 on
  {
-   delay_ms(100);
+   delay_ms(200);
    if(!input(sw_up)&&input(sw_down)&&(setvale==2))
    {
     lcd_gotoxy(5,0);lcd_putc("1");
@@ -265,7 +265,7 @@ void f_set_active_vale(void)
  }
  if(input(sw_up)&&!input(sw_down)&&(setvale==2))//////////////vale3 off
  {
-   delay_ms(100);
+   delay_ms(200);
    if(input(sw_up)&&!input(sw_down)&&(setvale==2))
    {
     lcd_gotoxy(5,0);lcd_putc("0");
@@ -275,7 +275,7 @@ void f_set_active_vale(void)
 //--------------------------------------------------------------------------
  if(!input(sw_up)&&input(sw_down)&&(setvale==3))//////////////vale4 on
  {
-   delay_ms(100);
+   delay_ms(200);
    if(!input(sw_up)&&input(sw_down)&&(setvale==3))
    {
     lcd_gotoxy(7,0);lcd_putc("1");
@@ -284,7 +284,7 @@ void f_set_active_vale(void)
  }
  if(input(sw_up)&&!input(sw_down)&&(setvale==3))//////////////vale4 off
  {
-   delay_ms(100);
+   delay_ms(200);
    if(input(sw_up)&&!input(sw_down)&&(setvale==3))
    {
     lcd_gotoxy(7,0);lcd_putc("0");
@@ -302,7 +302,7 @@ void f_set_active_vale(void)
           delay_ms(100);
           if(!input(sw_up) && !input(sw_down))
           {
-           flg_set_vale=0;
+           
 
            write_eeprom (27,prg_v[1][1]);
            write_eeprom (28,prg_v[1][2]);
@@ -332,7 +332,7 @@ void f_set_active_vale(void)
 //----------------------        
            while(!input(sw_up) && !input(sw_down)){restart_wdt();}
            delay_ms(500);
-          
+           flg_set_vale=0;          
           }
        }
    }
