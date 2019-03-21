@@ -203,10 +203,7 @@ int8 lo_temp=0;
 int1 prg_v[13][5];
 int1 flg_set_time,flg_set_prg;
 int1 flg_set_vale=0;
-int1 flg_v1=0;
-int1 flg_v2=0;
-int1 flg_v3=0;
-int1 flg_v4=0;
+
 
 int1 flg_set_temp=0;
 
@@ -280,7 +277,7 @@ trise2=1;
    
   // ds1307_init();
 
-   IF(read_eeprom(2)==255 || read_eeprom(3)==255 )
+   IF(read_eeprom(2)==255 || read_eeprom(3)==255|| read_eeprom(41)==255 )
    {
    set_time(15,58,23,28,12,04);   //SEC/MIN/HOURS/DATE/MONT/YEAR
    H1=6;H2=9;H3=11;H4=13;

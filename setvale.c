@@ -24,13 +24,14 @@ void f_set_active_vale(void)
  lcd_putc(num[prg_vale]);
  //lcd_putc(num[b]);
  ///////////////////// active vale from eeprom//////////
- if(prg_vale==1)
- {  //-------------------
+ if(prg_vale==1)//-------------- ACTIVE VALE PROGRAM1--------------
+ {  
     if(prg_v[1][1]==1)
     {
     lcd_gotoxy(1,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[1][1]==0)
     {
      lcd_gotoxy(1,0);lcd_putc("0");    
     }
@@ -39,7 +40,8 @@ void f_set_active_vale(void)
     {
      lcd_gotoxy(3,0);lcd_putc("1");    
     }
-    else
+    //else
+    if(prg_v[1][2]==0)
     {
      lcd_gotoxy(3,0);lcd_putc("0");    
     }
@@ -48,7 +50,8 @@ void f_set_active_vale(void)
     {
      lcd_gotoxy(5,0);lcd_putc("1");    
     }
-    else
+    //else
+    if(prg_v[1][3]==0)
     {
     lcd_gotoxy(5,0);lcd_putc("0");    
     }
@@ -57,20 +60,20 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(7,0);lcd_putc("1");    
     }
-    else
+    //else
+    if(prg_v[1][4]==0)
     {
     lcd_gotoxy(7,0);lcd_putc("0");
     }  
  }
- else if(prg_vale==2)
+ else if(prg_vale==2)////////////////////ACTIVE  VALE PROGRAM 2/////////////
  {
- 
-//----/---------------
     if(prg_v[2][1]==1)
     {
      lcd_gotoxy(1,0);lcd_putc("1");    
     }
-    else
+    //else
+    if(prg_v[2][1]==0)
     {
      lcd_gotoxy(1,0);lcd_putc("0");    
     }
@@ -79,7 +82,8 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(3,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[2][2]==0)
     {
     lcd_gotoxy(3,0);lcd_putc("0");
     }
@@ -88,7 +92,8 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(5,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[2][3]==0)
     {
     lcd_gotoxy(5,0);lcd_putc("0");
     }
@@ -97,20 +102,22 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(7,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[2][4]==0)
     {
     lcd_gotoxy(7,0);lcd_putc("0");
     } 
     
  }
- else if(prg_vale==3)
+ else if(prg_vale==3)////////////////////ACTIVE  VALE PROGRAM 3/////////////
  {
 //-------------------
     if(prg_v[3][1]==1)
     {
     lcd_gotoxy(1,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[3][1]==0)
     {
     lcd_gotoxy(1,0);lcd_putc("0");
     }
@@ -119,7 +126,8 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(3,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[3][2]==0)
     {
     lcd_gotoxy(3,0);lcd_putc("0");
     }
@@ -128,7 +136,8 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(5,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[3][3]==0)
     {
     lcd_gotoxy(5,0);lcd_putc("0");
     }
@@ -137,19 +146,21 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(7,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[3][4]==0)
     {
     lcd_gotoxy(7,0);lcd_putc("0");
     } 
  }
- else if(prg_vale==4)
+ else if(prg_vale==4)////////////////////ACTIVE  VALE PROGRAM 4/////////////
  {
 //-------------------
     if(prg_v[4][1]==1)
     {
     lcd_gotoxy(1,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[4][1]==0)
     {
     lcd_gotoxy(1,0);lcd_putc("0");
     }
@@ -158,7 +169,8 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(3,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[4][2]==0)
     {
     lcd_gotoxy(3,0);lcd_putc("0");
     }
@@ -167,7 +179,8 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(5,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[4][3]==0)
     {
     lcd_gotoxy(5,0);lcd_putc("0");
     }
@@ -176,14 +189,103 @@ void f_set_active_vale(void)
     {
     lcd_gotoxy(7,0);lcd_putc("1");
     }
-    else
+    //else
+    if(prg_v[4][4]==0)
     {
     lcd_gotoxy(7,0);lcd_putc("0");
     } 
  }
+ /*
+  else if(prg_vale==5)////////////////////ACTIVE  VALE PROGRAM 4/////////////
+ {
+//-------------------
+    if(prg_v[5][1]==1)
+    {
+    lcd_gotoxy(1,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[5][1]==0)
+    {
+    lcd_gotoxy(1,0);lcd_putc("0");
+    }
+   //----------------------
+    if(prg_v[5][2]==1)
+    {
+    lcd_gotoxy(3,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[5][2]==0)
+    {
+    lcd_gotoxy(3,0);lcd_putc("0");
+    }
+   //-------------------------
+    if(prg_v[5][3]==1)
+    {
+    lcd_gotoxy(5,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[5][3]==0)
+    {
+    lcd_gotoxy(5,0);lcd_putc("0");
+    }
+  //----------------------------
+    if(prg_v[5][4]==1)
+    {
+    lcd_gotoxy(7,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[5][4]==0)
+    {
+    lcd_gotoxy(7,0);lcd_putc("0");
+    } 
+ }
+  else if(prg_vale==6)////////////////////ACTIVE  VALE PROGRAM 4/////////////
+ {
+//-------------------
+    if(prg_v[6][1]==1)
+    {
+    lcd_gotoxy(1,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[6][1]==0)
+    {
+    lcd_gotoxy(1,0);lcd_putc("0");
+    }
+   //----------------------
+    if(prg_v[6][2]==1)
+    {
+    lcd_gotoxy(3,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[6][2]==0)
+    {
+    lcd_gotoxy(3,0);lcd_putc("0");
+    }
+   //-------------------------
+    if(prg_v[6][3]==1)
+    {
+    lcd_gotoxy(5,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[6][3]==0)
+    {
+    lcd_gotoxy(5,0);lcd_putc("0");
+    }
+  //----------------------------
+    if(prg_v[6][4]==1)
+    {
+    lcd_gotoxy(7,0);lcd_putc("1");
+    }
+    //else
+    if(prg_v[6][4]==0)
+    {
+    lcd_gotoxy(7,0);lcd_putc("0");
+    } 
+ } 
+ */
  else{}
  
- ////////////////////set_vale//////////////////////
+ ////////////////////set_vale/////////////////////////////////////////
  if(!input(sw_set))
  {
    delay_ms(100);
@@ -193,7 +295,7 @@ void f_set_active_vale(void)
    }
    if(setvale>3)setvale=0;
  }
- //////////////////active vale/////////////////////////
+ //////////////////active vale CURSOR Blink/////////////////////////
    if(setvale==0)
    {
     lcd_gotoxy(1,0);
@@ -214,8 +316,20 @@ void f_set_active_vale(void)
     lcd_gotoxy(7,0);
     lcd_cursor_on(1);
    }
+ /*
+   else if(setvale==4)
+   {
+    lcd_gotoxy(5,0);
+    lcd_cursor_on(1);
+   }
+   else if(setvale==5)
+   {
+    lcd_gotoxy(7,0);
+    lcd_cursor_on(1);
+   } 
+ */
    else{} 
- ////////////////////setvale active/////////////////////
+ //////////////////// save vale active in prg_v[][]  variable////////////////
  if(!input(sw_up)&&input(sw_down)&&(setvale==0))//////////////vale1 on
  {
    delay_ms(200);
@@ -291,10 +405,45 @@ void f_set_active_vale(void)
     prg_v[prg_vale][4]=0;    
    }
  } 
+/* 
+ if(!input(sw_up)&&input(sw_down)&&(setvale==4))//////////////vale4 on
+ {
+   delay_ms(200);
+   if(!input(sw_up)&&input(sw_down)&&(setvale==4))
+   {
+    lcd_gotoxy(7,0);lcd_putc("1");
+    prg_v[prg_vale][4]=1;   
+   }
+ }
+ if(input(sw_up)&&!input(sw_down)&&(setvale==4))//////////////vale4 off
+ {
+   delay_ms(200);
+   if(input(sw_up)&&!input(sw_down)&&(setvale==4))
+   {
+    lcd_gotoxy(7,0);lcd_putc("0");
+    prg_v[prg_vale][4]=0;    
+   }
+ }
+ if(!input(sw_up)&&input(sw_down)&&(setvale==5))//////////////vale5 on
+ {
+   delay_ms(200);
+   if(!input(sw_up)&&input(sw_down)&&(setvale==5))
+   {
+    lcd_gotoxy(7,0);lcd_putc("1");
+    prg_v[prg_vale][4]=1;   
+   }
+ }
+ if(input(sw_up)&&!input(sw_down)&&(setvale==5))//////////////vale5 off
+ {
+   delay_ms(200);
+   if(input(sw_up)&&!input(sw_down)&&(setvale==5))
+   {
+    lcd_gotoxy(7,0);lcd_putc("0");
+    prg_v[prg_vale][4]=0;    
+   }
+ } 
  
- 
- 
- 
+*/ 
  
  ////////////////////exit function///////////////// 
        if(!input(sw_up) && !input(sw_down))
@@ -302,7 +451,7 @@ void f_set_active_vale(void)
           delay_ms(100);
           if(!input(sw_up) && !input(sw_down))
           {
-           
+           flg_set_vale=0;
 
            write_eeprom (27,prg_v[1][1]);
            write_eeprom (28,prg_v[1][2]);
@@ -327,12 +476,23 @@ void f_set_active_vale(void)
 //----------------------
            write_eeprom (41,prg_v[4][3]);
            write_eeprom (42,prg_v[4][4]);
+/*
+           write_eeprom (43,prg_v[5][1]);
+           write_eeprom (44,prg_v[5][2]);
+           write_eeprom (45,prg_v[5][3]);
+           write_eeprom (46,prg_v[5][4]);
            
+           write_eeprom (47,prg_v[5][1]);
+           write_eeprom (48,prg_v[5][2]);
+           write_eeprom (49,prg_v[5][3]);
+           write_eeprom (50,prg_v[5][4]);
+           
+*/          
            //write_eeprom(0,12);write_eeprom(1,34);
 //----------------------        
            while(!input(sw_up) && !input(sw_down)){restart_wdt();}
            delay_ms(500);
-           flg_set_vale=0;          
+                     
           }
        }
    }
